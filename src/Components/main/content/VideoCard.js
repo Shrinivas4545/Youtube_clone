@@ -1,13 +1,13 @@
-import {Card, CardContent, CardMedia,Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { Scale } from '@mui/icons-material'
 
 const VideoCard = ({ videos }) => {
+    // console.log(videos);
     return (
         <Card
             component={Link}
-            to={"/"}
+            to={`/video/${videos.videoId}`}
             sx={{
                 width: { xs: '356px', ssm: '275px', sm: '290px', md: '320px' },
                 backgroundColor: '#1e1e1e',
@@ -19,16 +19,18 @@ const VideoCard = ({ videos }) => {
             }}>
             <CardMedia
                 sx={{ height: '60%', width: '100%' }}
-                image={videos.snippet.thumbnails.medium.url}
+                // image={videos.snippet.thumbnails.medium.url}
+                image={videos.thumbnail[0].url}
                 title=""
             />
             <CardContent>
                 <Typography variant="subtitle1" fontWeight={700} sx={{ color: 'white', height: '50px', overflowY: 'hidden' }}>
-                    {/* {videos.snippet.title.slice(0,40)} */}
-                    {videos.snippet.title}
+                    {/* {videos.snippet.title} */}
+                    {videos.title}
                 </Typography>
                 <Typography variant="body2" color="grey" textTransform={'capitalize'} sx={{ marginTop: '10px' }}>
-                    {videos.snippet.channelTitle}
+                    {/* {videos.snippet.channelTitle} */}
+                    {videos.channelTitle}
                 </Typography>
             </CardContent>
         </Card>
