@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 import { setCategory } from "../../Redux/Category/actionCategory";
 
 const SearchBar = () => {
-
-
   const dispatch = useDispatch();
   const onClickHandler = () => {
     const searchText = document.getElementById("search").value;

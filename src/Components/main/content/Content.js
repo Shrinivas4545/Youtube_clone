@@ -40,7 +40,6 @@ const Content = () => {
   const fetchVideos = async () => {
     try {
       const response = await axios.request(options);
-      console.log(response.data.data);
       // setVideos(response.data.items);
       setVideos(response.data.data);
     } catch (error) {
@@ -62,7 +61,7 @@ const Content = () => {
       <Stack sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} rowGap={2}>
         {videos.length !== 0 ?
           videos.map((video) => (
-            <VideoCard videos={video} />
+            <VideoCard video={video} key={video.videoId} />
           ))
             :
             <h1>loading...</h1>
