@@ -37,13 +37,21 @@ const RelatedVideo = ({ videoId }) => {
         <Stack
             sx={{
                 display: 'flex',
-                flexDirection: {xs: 'row', sm: 'column'},
+                flexDirection: { xs: 'row', sm: 'column' },
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
                 backgroundColor: 'black'
-            }} 
+            }}
             rowGap={2}>
-                <Typography sx={{width: '100%'}} fontWeight={700}> <span style={{color: 'red'}}>Related</span> Videos...</Typography>
+            <Typography variant='h5'
+                sx={{
+                    width: '100%',
+                    borderTop: '1px solid #3d3d3d',
+                    marginTop: {xs: '15px', sm:'none'},
+                    paddingTop: {xs: '5px'}
+                }} fontWeight={700}>
+                <span style={{ color: 'red' }}>Related</span> Videos...
+            </Typography>
             {relatedVideos.map((video) => (
                 <VideoCard video={video} />
             ))
