@@ -26,7 +26,6 @@ const Content = () => {
   const fetchVideos = async () => {
     try {
       const response = await axios.request(options);
-      // setVideos(response.data.items);
       setVideos(response.data.data);
     } catch (error) {
       console.error(error);
@@ -47,7 +46,7 @@ const Content = () => {
         {videos.length !== 0 ?
           videos.map((video) => (
             video.type === "channel" ?
-              <ChannelCard video={video} key={video.videoId} />
+              <ChannelCard video={video} key={video.channelId} />
               :
               <VideoCard video={video} key={video.videoId} />
           ))

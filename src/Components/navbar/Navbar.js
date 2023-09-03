@@ -13,7 +13,12 @@ const Navbar = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        borderBottom: '1px solid #3d3d3d'
+        borderBottom: '1px solid #3d3d3d',
+        backgroundColor: 'black',
+        top: '0px',
+        position: 'sticky',
+        zIndex: 1000, 
+
       }}
     >
       <Link to={"/"}>

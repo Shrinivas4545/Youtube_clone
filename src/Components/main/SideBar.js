@@ -36,6 +36,8 @@ const SideBar = () => {
                 borderRight: { sm : '1px solid #3d3d3d'},
                 borderBottom : { xs : '1px solid #3d3d3d', sm : 'none'},
                 paddingBottom : '10px',
+                position: 'sticky',
+                top: '65px'
             }}
         >
             {categoriesToDisplay.map((category, index) => (
