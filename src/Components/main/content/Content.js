@@ -3,26 +3,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import VideoCard from './VideoCard';
+import ChannelCard from './ChannelCard';
+import Loading from '../../Loading';
 
 const Content = () => {
   const selectedCategory = useSelector(state => state.selectedCategory.selectedCategory);
   const [videos, setVideos] = useState([]);
-
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://youtube-v31.p.rapidapi.com/search',
-  //   params: {
-  //     q: selectedCategory,
-  //     part: 'snippet,id',
-  //     maxResults: '50',
-  //     order: 'date'
-  //   },
-  //   headers: {
-  //     'X-RapidAPI-Key': '47995eb5e1msh8081f490d2b2f89p1dced0jsn976653c1514a',
-  //     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-  //   }
-  // }
-
   const options = {
     method: 'GET',
     url: 'https://youtube-v3-alternative.p.rapidapi.com/search',
@@ -52,7 +38,6 @@ const Content = () => {
     fetchVideos();
   }, [selectedCategory])
 
-
   return (
     <Box /*sx={{ height: '92vh' }}*/>
       <Typography variant='h5' fontWeight={700} mb={2} ml={2}>
@@ -61,10 +46,13 @@ const Content = () => {
       <Stack sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} rowGap={2}>
         {videos.length !== 0 ?
           videos.map((video) => (
-            <VideoCard video={video} key={video.videoId} />
+            video.type === "channel" ?
+              <ChannelCard video={video} key={video.videoId} />
+              :
+              <VideoCard video={video} key={video.videoId} />
           ))
-            :
-            <h1>loading...</h1>
+          :
+          <Loading />
         }
       </Stack>
     </Box>

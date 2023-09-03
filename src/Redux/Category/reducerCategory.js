@@ -1,7 +1,8 @@
-import { SET_CATEGORY } from "./actionTypeCategory";
+import { SET_CATEGORY, SET_CHANNELDETAILS } from "./actionTypeCategory";
 
 const initialState = {
     selectedCategory: "Trending",
+    channelDetails: {}
 }
 
 const reducerCategory = (state = initialState, action) => {
@@ -11,7 +12,12 @@ const reducerCategory = (state = initialState, action) => {
                 ...state,
                 selectedCategory: action.payload
             }
-
+        
+        case SET_CHANNELDETAILS:
+            return {
+                ...state, 
+                channelDetails: action.payload
+            }
         default:
             return state;
     }

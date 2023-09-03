@@ -13,7 +13,7 @@ const Feed = () => {
       }}>
       <Stack >
         <SideBar />
-      </Stack>
+      </Stack> 
       <Stack>
         <Content />
       </Stack>
