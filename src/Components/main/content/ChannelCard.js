@@ -7,7 +7,6 @@ import { setChannelDetails } from '../../../Redux/Category/actionCategory';
 const ChannelCard = ({ video }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log(video)
      
     const handleClk = () => {
     dispatch(setChannelDetails(video));

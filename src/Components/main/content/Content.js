@@ -38,8 +38,8 @@ const Content = () => {
   }, [selectedCategory])
 
   return (
-    <Box /*sx={{ height: '92vh' }}*/>
-      <Typography variant='h5' fontWeight={700} mb={2} ml={2}>
+    <Box>
+      <Typography variant='h5' textTransform="capitalize" fontWeight={700} mb={2} ml={2}>
         <span style={{ color: 'red' }}>{selectedCategory}</span> Videos...
       </Typography>
       <Stack sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} rowGap={2}>

@@ -1,4 +1,4 @@
-import  { SET_CATEGORY, SET_CHANNELDETAILS } from './actionTypeCategory' 
+import  { SET_CATEGORY, SET_CHANNELDETAILS, SET_SEARCHTEXT } from './actionTypeCategory' 
 
 export const setCategory = (category) => {
     return {
@@ -6,6 +6,13 @@ export const setCategory = (category) => {
         payload: category
     }
 } 
+
+export const setSearchText = (searchText) => {
+    return {
+        type: SET_SEARCHTEXT,
+        payload: searchText
+    }
+}
 
 export const setChannelDetails = (channelDetails) => {
     return {

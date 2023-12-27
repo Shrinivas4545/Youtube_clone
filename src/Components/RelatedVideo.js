@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import VideoCard from './main/content/VideoCard';
 import { Stack, Typography } from '@mui/material';
+import Loading from './Loading';
 
 const RelatedVideo = ({ videoId }) => {
     const [relatedVideos, setRelatedVideos] = useState([])
@@ -37,7 +38,7 @@ const RelatedVideo = ({ videoId }) => {
         <Stack
             sx={{
                 display: 'flex',
-                flexDirection: { xs: 'row', sm: 'column' },
+                flexDirection: "row",
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
                 backgroundColor: 'black'
@@ -47,14 +48,18 @@ const RelatedVideo = ({ videoId }) => {
                 sx={{
                     width: '100%',
                     borderTop: '1px solid #3d3d3d',
-                    marginTop: {xs: '15px', sm:'none'},
-                    paddingTop: {xs: '5px'}
+                    marginTop: { xs: '15px', sm: 'none' },
+                    paddingTop: { xs: '5px' }
                 }} fontWeight={700}>
                 <span style={{ color: 'red' }}>Related</span> Videos...
             </Typography>
-            {relatedVideos.map((video) => (
-                <VideoCard video={video} />
-            ))
+            {
+                relatedVideos.length !== 0 ?
+                    relatedVideos.map((video) => (
+                        <VideoCard video={video} />
+                    ))
+                    :
+                    <Loading />
             }
         </Stack>
     )

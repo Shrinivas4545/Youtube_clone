@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Stack, Typography } from "@mui/material";
 import { categories } from "../../utils/Constants";
-import { useDispatch } from "react-redux";
-import { setCategory } from "../../Redux/Category/actionCategory";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory, setSearchText } from "../../Redux/Category/actionCategory";
 
 const SideBar = () => {
-
+    const curCategory = useSelector(state => state.selectedCategory.selectedCategory);
     const dispatch = useDispatch();
 
     const categoriesToDisplay = categories;
     const [hoveredButtonIndex, setHoveredButtonIndex] = useState(null);
-    const [onClickEvent, setOnClickEvent] = useState("Trending");
 
     const handleMouseEnter = (index) => {
         setHoveredButtonIndex(index);
@@ -22,7 +21,6 @@ const SideBar = () => {
 
     const handleButtonClick = (name) => {
         dispatch(setCategory(name));
-        setOnClickEvent(name)
     }
 
     return (
@@ -52,15 +50,16 @@ const SideBar = () => {
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "flex-start",
-                        opacity: (hoveredButtonIndex === index || onClickEvent === category.name) ? 1 : 0.6,
+                        opacity: (hoveredButtonIndex === index || curCategory === category.name) ? 1 : 0.6,
                         marginLeft: "8px",
                         width: "auto",
                         alignItems: "center",
-                        backgroundColor: onClickEvent === category.name ? 'red' : 'black',
-                        borderRadius: '10px'
+                        backgroundColor: curCategory === category.name ? 'red' : 'black',
+                        borderRadius: '10px',
+                        cursor: "pointer"
                     }}
                 >
-                    <span style={{ color: onClickEvent === category.name ? 'white' : 'red', marginRight: "3px" }}>
+                    <span style={{ color: curCategory === category.name ? 'white' : 'red', marginRight: "3px" }}>
                         {category.icon}
                     </span>
                     <Typography

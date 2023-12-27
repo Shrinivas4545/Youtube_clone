@@ -40,22 +40,16 @@ const VideoDetail = () => {
         padding: "5px",
         display: 'flex',
         flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'space-around'
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: "center"
       }}>
-      <Stack direction={'column'}>
+      <Stack direction={'column'} width={{lg: "70%"}} height={{ sm: "350px" ,lg: "600px"}}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
           controls
-          width={
-            window.innerWidth >= 764 && window.innerWidth < 900 ?
-              window.innerWidth - 320
-              :
-              window.innerWidth >= 900 ?
-                window.innerWidth - 400
-                :
-                '100%'}
-          height={window.innerWidth >= 900 ? '550px' : '350px'}
+          width={"100%"}
+          height={"100%"}
         />
         {videoDetails &&
           <Typography
@@ -63,16 +57,7 @@ const VideoDetail = () => {
             fontWeight={600}
             gutterBottom
             sx={{
-              width:
-                window.innerWidth >= 764 && window.innerWidth < 900 ?
-                  window.innerWidth - 320
-                  :
-                  window.innerWidth >= 900 ?
-                    window.innerWidth - 400
-                    :
-                    '100%',
-              overflow: 'hidden',
-
+              // overflow: 'hidden',
             }}
             mt={{ xs: '5px', sm: '10px', md: '15px' }}
           >

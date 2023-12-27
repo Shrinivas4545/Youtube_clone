@@ -9,7 +9,6 @@ import Loading from './Loading';
 
 const ChannelDetail = () => {
   const channelId = useParams();
-  console.log(channelId)
   const [channelVideo, setChannelVideo] = useState([])
   const channelDetailsStore = useSelector(state => state.selectedCategory.channelDetails)
   const options = {
