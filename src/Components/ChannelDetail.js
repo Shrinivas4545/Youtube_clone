@@ -1,5 +1,4 @@
 import { Stack, Typography } from '@mui/material'
-import Skeleton from '@mui/material/Skeleton';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -24,7 +23,6 @@ const ChannelDetail = () => {
   };
 
   const fetchChannelDetails = async () => {
-    debugger
     try {
       const response = await axios.request(options);
       setChannelVideo(response.data.data)

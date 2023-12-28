@@ -2,8 +2,9 @@ import { Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/youtube';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import RelatedVideo from './RelatedVideo';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const VideoDetail = () => {
   const videoId = useParams().id;
@@ -44,7 +45,7 @@ const VideoDetail = () => {
         justifyContent: 'space-around',
         alignItems: "center"
       }}>
-      <Stack direction={'column'} width={{lg: "70%"}} height={{ sm: "350px" ,lg: "600px"}}>
+      <Stack direction={'column'} width={{ lg: "70%" }} height={{ sm: "350px", lg: "600px" }}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
           controls
@@ -64,9 +65,14 @@ const VideoDetail = () => {
             {videoDetails.title}
           </Typography>
         }
-        <Typography variant="body2" color="grey" textTransform={'capitalize'}>
-          {videoDetails.channelTitle}
-        </Typography>
+        <Link to={`/channel/${videoDetails.channelId}`} style={{ textTransform: 'none', textDecoration: 'none' }} >
+          <Stack direction={"row"}>
+            <AccountCircleIcon />
+            <Typography variant="body2" color="grey" textTransform={'capitalize'} ml={1} mt={0.25}>
+              {videoDetails.channelTitle}
+            </Typography>
+          </Stack>
+        </Link>
       </Stack>
       <Stack>
         <RelatedVideo videoId={videoId} />

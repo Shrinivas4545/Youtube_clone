@@ -3,8 +3,15 @@ import { Stack } from "@mui/material";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../../Redux/Category/actionCategory";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(setCategory("Trending"))
+  }
+
   return (
     <Stack
       direction="row"
@@ -21,8 +28,8 @@ const Navbar = () => {
 
       }}
     >
-      <Link to={"/"}>
-        <LiveTvIcon sx={{ color: "red", fontSize: 40, marginLeft: '5px', backgroundColor: 'black' }} />
+      <Link to={"/"} onClick={handleClick}>
+        <LiveTvIcon sx={{ color: "red", fontSize: 40, marginLeft: {xs: "5px", sm: "35px"}, backgroundColor: 'black' }} />
       </Link>
       <SearchBar />
     </Stack>
